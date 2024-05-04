@@ -1,4 +1,4 @@
-import logo from '../assets/images/popcornDiary-logo.png';
+import logo from '../assets/images/popcornDiary-logo.webp';
 
 export default function Logo() {
   return (
