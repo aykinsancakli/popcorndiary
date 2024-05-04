@@ -1,0 +1,1561 @@
+/* ********************************************************* */
+/* LOGO */
+/* ********************************************************* */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  position: relative;
+}
+
+.logo span {
+  font-size: 3.2rem;
+}
+
+.popcorn-logo {
+  transform: scale(1.9) translateY(-0.1rem);
+  border-radius: 50%;
+  filter: grayscale(25%);
+  overflow: visible;
+
+  @include respond($bp-medium) {
+    transform: scale(1.75) translateY(0.1rem);
+  }
+
+  @include respond($bp-medium-sm) {
+    transform: scale(1.2) translateY(0.1rem);
+  }
+
+  @include respond($bp-medium-xs) {
+    transform: scale(1.1) translateY(0.1rem);
+  }
+
+  @include respond($bp-smallest) {
+    transform: scale(1) translateY(0.3rem);
+    filter: grayscale(35%);
+  }
+}
+
+.logo h1 {
+  font-family: 'Magnolia Script', cursive;
+  font-size: 3rem;
+  color: var(--color-text);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 1rem;
+  filter: brightness(1.05);
+
+  @include respond($bp-medium) {
+    font-size: 2.8rem;
+  }
+
+  @include respond($bp-medium-sm) {
+    font-size: 2.6rem;
+    margin-left: 0;
+  }
+
+  @include respond($bp-medium-xs) {
+    font-size: 2.2rem;
+    margin-left: 0;
+  }
+
+  @include respond($bp-small) {
+    display: none;
+  }
+}
+
+/* ********************************************************* */
+/* SEARCH */
+/* ********************************************************* */
+.search-box {
+  position: relative;
+  overflow: hidden;
+  padding-top: 2.5px;
+  width: 70%;
+  background: transparent;
+  border-radius: 0.7rem;
+
+  @include respond($bp-largest) {
+    width: 65%;
+  }
+
+  @include respond($bp-medium) {
+    width: 60%;
+  }
+
+  @include respond($bp-medium-sm) {
+    width: 70%;
+  }
+
+  @include respond($bp-small) {
+    width: 100%;
+  }
+}
+
+.search {
+  padding: 1.1rem 1.6rem;
+  background-color: var(--color-primary-light);
+  border: none;
+  border-radius: 0.7rem;
+  font-size: 1.8rem;
+  width: 100%;
+  color: var(--color-text);
+  opacity: 0.9;
+  transition: all 0.3s;
+}
+
+.disabled-search {
+  opacity: 0;
+  color: transparent;
+}
+
+.search::placeholder {
+  color: var(--color-text-dark);
+}
+
+.search:focus {
+  outline: none;
+  box-shadow: inset 1px 2px 1px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.search-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  transform: translateY(4rem);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.search:focus ~ .search-btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ********************************************************* */
+/* WELCOME SCREEN */
+/* ********************************************************* */
+.welcome-screen {
+  background-image: url(../assets/images/welcome-cover.png);
+  height: 100%;
+  max-width: 100%;
+  background-position: center;
+  background-size: cover;
+
+  animation: blurIn 0.6s ease-in-out;
+
+  @include respond($bp-smallest) {
+    background-image: url(../assets/images/welcome-cover-small.png);
+  }
+}
+
+.welcome-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom right, #2e2e2e83 42%, #6c28d944);
+  // z-index: -1;
+  opacity: 0.6;
+  pointer-events: none;
+  // animation: breathe 4s infinite alternate-reverse;
+
+  @include respond($bp-smallest) {
+    background-image: none;
+  }
+}
+
+/* ********************************************************* */
+/* NUM RESULTS */
+/* ********************************************************* */
+.num-results {
+  display: inline-block;
+  font-size: 1.8rem;
+
+  @include respond($bp-phone) {
+    font-size: 1.25rem;
+  }
+}
+
+.num-results span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.num-results .confetti,
+.num-results .sad-face,
+.num-results .question {
+  margin-left: 0.5rem;
+
+  @include respond($bp-phone) {
+    margin-left: 0.2rem;
+    height: 1.4rem;
+  }
+}
+
+.result-animation {
+  animation: resultIn 0.7s ease-in;
+}
+
+@keyframes resultIn {
+  0% {
+    opacity: 0;
+    filter: blur(3px);
+  }
+
+  70% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.result-stat {
+  font-weight: 500;
+  font-style: italic;
+}
+
+.result-emoji {
+  animation: lightenUp 2.8s infinite linear;
+}
+
+@keyframes lightenUp {
+  0% {
+    filter: brightness(0.7);
+  }
+
+  60% {
+    filter: brightness(2);
+    transform: scale(1.07);
+  }
+
+  100% {
+    filter: brightness(0.7);
+  }
+}
+
+.result-intro-animate {
+  animation: blurIn 0.6s ease-in-out;
+}
+
+@keyframes blurIn {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* ********************************************************* */
+/* MOVIE DETAILS HEADING */
+/* ********************************************************* */
+.movie-details-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  animation: slideRight 0.5s ease-in-out forwards;
+}
+
+/* ********************************************************* */
+/* MOVIES WATCHED HEADING */
+/* ********************************************************* */
+.movies-watched-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  animation: moveInTop 0.6s ease-in-out;
+}
+
+@keyframes moveInTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+    filter: blur(3px);
+  }
+
+  70% {
+    transform: translateY(12%);
+    opacity: 0.75;
+    filter: blur(1px);
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* ********************************************************* */
+/* BUTTON WATCHED MOVIES */
+/* ********************************************************* */
+.watched-movies-btn {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 4px;
+
+  font-family: inherit;
+  font-size: 1.4rem;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  color: #e2e8f0;
+  background-color: #9f1239;
+
+  cursor: pointer;
+  transition: all 0.3s;
+
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 0.7rem;
+
+  @include respond($bp-phone) {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+.watched-movies-btn:hover {
+  background-color: #881337;
+
+  transform: translate(0.1rem, -0.2rem);
+  box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.15);
+
+  @include respond($bp-medium-sm) {
+    transform: translate(0);
+    box-shadow: none;
+    background-color: #9f1239;
+  }
+}
+
+.watched-movies-btn span {
+  background-color: #0000009a;
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 50%;
+  font-weight: 500;
+  margin-left: -0.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.watched-darker {
+  background-color: var(--color-primary);
+  filter: brightness(0.9);
+}
+
+.watched-movies-btn.watched-darker:hover {
+  background-color: var(--color-primary-light);
+  filter: brightness(1);
+
+  @include respond($bp-medium-sm) {
+    background-color: var(--color-primary);
+    filter: brightness(0.9);
+  }
+}
+
+/* ********************************************************* */
+/* LOADER */
+/* ********************************************************* */
+.loader {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 26%;
+  font-size: 1.6rem;
+}
+
+.loader p {
+  font-weight: 500;
+  filter: brightness(0.75);
+}
+
+.loading-icon {
+  animation: spin 0.8s infinite linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ********************************************************* */
+/* ERROR */
+/* ********************************************************* */
+.error {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2.6rem;
+  padding: 4.8rem;
+  animation: breathe 3s infinite linear;
+  animation-fill-mode: initial;
+  color: var(--color-text-dark);
+
+  @include respond($bp-phone) {
+    font-size: 2.4rem;
+  }
+}
+
+.error span {
+  display: flex;
+  align-items: center;
+  transform: translateY(0.15rem);
+}
+
+@keyframes breathe {
+  0% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(0.5);
+  }
+
+  100% {
+    filter: brightness(1);
+  }
+}
+
+/* ********************************************************* */
+/* TOGGLE BUTTON */
+/* ********************************************************* */
+.btn-toggle {
+  top: 0.8rem;
+  right: 0.8rem;
+  position: sticky;
+  height: 4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-background-900);
+  color: var(--color-text);
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+
+  @include respond($bp-smallest) {
+    height: 3.5rem;
+  }
+}
+
+.btn-toggle:hover {
+  transform: scale(1.15);
+  filter: brightness(1.2);
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.075);
+
+  @include respond($bp-medium-sm) {
+    transform: scale(1);
+    filter: brightness(1);
+    box-shadow: none;
+  }
+}
+
+.btn-toggle .chevron.up.green path {
+  transition: stroke 0.5s ease-in-out;
+}
+
+.btn-toggle:hover .chevron.up.green path {
+  stroke: #ef4444;
+
+  @include respond($bp-medium-sm) {
+    stroke: #adb5bd;
+  }
+}
+
+.btn-toggle .chevron.down.red path {
+  transition: stroke 0.5s ease-in-out;
+}
+
+.btn-toggle:hover .chevron.down.red path {
+  stroke: #10b981;
+
+  @include respond($bp-medium-sm) {
+    stroke: #adb5bd;
+  }
+}
+
+/* ********************************************************* */
+/*  BTN ANIMATIONS UTILITY CLASSES */
+/* ********************************************************* */
+.up {
+  transform: rotate(-180deg);
+  transition: all 0.3s;
+}
+
+.down {
+  transform: rotate(0);
+  transition: all 0.3s;
+}
+
+/* ********************************************************* */
+/*  WATCHED MOVIES */
+/* ********************************************************* */
+.list {
+  list-style: none;
+  padding: 0.8rem 0;
+  padding: 0;
+  overflow: auto;
+  transition: all 0.5s;
+}
+
+/* ********************************************************* */
+/*  WATCHED MOVIE FILTERS */
+/* ********************************************************* */
+.search-watched,
+.select-genre,
+.sort-by,
+.btn-delete-all {
+  height: 4rem;
+  padding: 0 0.5rem;
+  width: 10%;
+  z-index: 9999;
+  border: none;
+  position: sticky;
+  top: 6.68rem;
+  background-color: #2d2d2d;
+  color: var(--color-text-dark);
+  font-family: inherit;
+  font-size: 1.5rem;
+  animation: blurIn 0.35s ease-in;
+  transition: all 0.2s;
+
+  @include respond($bp-phone) {
+    font-size: 1.05rem;
+    top: 6.28rem;
+  }
+}
+
+.search-watched {
+  padding: 1rem 3.1rem;
+  width: 65%;
+  top: 6.68rem;
+  color: var(--color-text);
+  border-bottom-left-radius: 0.9rem;
+  border-right: 1px solid #404040;
+
+  @include respond($bp-medium) {
+    width: 55%;
+  }
+
+  @include respond($bp-medium-xs) {
+    width: 45%;
+  }
+
+  @include respond($bp-phone) {
+    width: 40%;
+    padding: 1rem;
+  }
+
+  @include respond($bp-phone) {
+    top: 6.28rem;
+    width: 38%;
+  }
+}
+
+.search-watched:focus {
+  outline: none;
+  background-color: #383838;
+
+  @include respond($bp-medium-sm) {
+    background-color: #2d2d2d;
+  }
+}
+
+.select-genre {
+  padding: 0 0.5rem;
+  top: 6.68rem;
+  width: 12%;
+  border-right: 1px solid #404040;
+
+  cursor: pointer;
+
+  @include respond($bp-medium) {
+    width: 15%;
+  }
+
+  @include respond($bp-medium-xs) {
+    width: 20%;
+  }
+
+  @include respond($bp-phone) {
+    top: 6.28rem;
+    width: 22%;
+  }
+}
+
+.select-genre:focus {
+  outline: none;
+}
+
+.select-genre:hover {
+  background-color: #383838;
+}
+
+.sort-by {
+  padding: 0 0.5rem;
+  width: 12%;
+
+  border-right: 1px solid #404040;
+  cursor: pointer;
+
+  @include respond($bp-medium) {
+    width: 15%;
+  }
+
+  @include respond($bp-medium-xs) {
+    width: 20%;
+  }
+
+  @include respond($bp-phone) {
+    width: 25%;
+  }
+}
+
+.sort-by:focus {
+  outline: none;
+}
+
+.sort-by:hover {
+  background-color: #383838;
+}
+
+.btn-delete-all {
+  height: 4rem;
+  width: 11%;
+  border-bottom-right-radius: 0.9rem;
+  cursor: pointer;
+
+  @include respond($bp-medium) {
+    width: 15%;
+  }
+}
+
+.btn-delete-all:hover {
+  background-color: #383838;
+}
+
+.search-watched::placeholder {
+  color: var(--color-text-dark);
+}
+
+@include respond($bp-medium-sm) {
+  .search-watched:hover,
+  .select-genre:hover,
+  .sort-by:hover,
+  .btn-delete-all:hover {
+    background-color: #2d2d2d;
+  }
+}
+
+/* ********************************************************* */
+/*  DELETE CONFIRMATION POPUP */
+/* ********************************************************* */
+.confirmation-popup {
+  position: sticky;
+  top: 10.68rem;
+  padding: 2rem;
+  background-color: var(--color-background-500);
+  color: var(--color-text);
+  backdrop-filter: blur(2.5px);
+  border-radius: 0.9rem;
+  border-top: 1px solid #404040;
+
+  z-index: 9999;
+  font-size: 1.8rem;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  animation: blurIn 0.2s ease-in;
+
+  @include respond($bp-phone) {
+    top: 10.28rem;
+  }
+}
+
+.confirmation-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-confirm {
+  padding: 0.5rem;
+  width: 7rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--color-text);
+  background-color: #3f3f46;
+  transition: all 0.2s;
+}
+
+.btn-confirm:hover {
+  filter: brightness(1.2);
+}
+
+/* ********************************************************* */
+/*  LIST ANIMATIONS UTILITY CLASSES */
+/* ********************************************************* */
+.list-up {
+  animation: listUp 0.5s ease-in-out;
+
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.list-down {
+  animation: listDown 0.8s ease-in-out;
+}
+
+.blur-in {
+  animation: blurIn 0.35s ease-in;
+}
+
+@keyframes listDown {
+  0% {
+    transform: translateY(-100rem);
+  }
+
+  70% {
+    transform: translateY(5rem);
+  }
+
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.list-down {
+  animation: listDown 0.8s ease-in-out;
+}
+
+@keyframes listUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5rem);
+  }
+
+  100% {
+    transform: translateY(-100rem);
+  }
+}
+
+.list-hidden {
+  opacity: 0;
+  filter: blur(3px);
+  transition: all 0.4s;
+
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hide-scrollbar {
+  overflow-y: hidden;
+}
+
+.box--movies.fade-out {
+  background: linear-gradient(
+    to bottom right,
+    rgba(23, 23, 23, 0.04),
+    rgba(62, 62, 62, 0.274)
+  );
+  transition: all 0.6s;
+}
+
+.box--watched.fade-out {
+  background: linear-gradient(
+    to bottom right,
+    rgba(23, 23, 23, 0.04),
+    rgba(62, 62, 62, 0.274)
+  );
+  transition: all 0.4s;
+}
+
+.list-center {
+  opacity: 1;
+  transition: all 0.4s;
+}
+
+.list .calendar {
+  display: flex;
+  align-items: center;
+}
+
+/* ********************************************************* */
+/*  MOVIES LIST */
+/* ********************************************************* */
+.list span {
+  display: flex;
+  align-items: center;
+
+  @include respond($bp-phone) {
+    font-size: 1.3rem;
+  }
+}
+
+.summary span {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+
+  @include respond($bp-phone) {
+    font-size: 1.1rem;
+  }
+}
+
+.list-watched {
+  height: calc(100% - 9rem);
+}
+
+.list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 2.4rem;
+  font-size: 1.6rem;
+  align-items: center;
+
+  padding: 1.6rem 3.2rem;
+  padding: 2.4rem 3.2rem 1.6rem 3.2rem;
+
+  @include respond($bp-phone) {
+    row-gap: 0.3rem;
+    padding: 2rem 2.8rem 1.2rem 2.8rem;
+  }
+}
+
+.list li:not(:last-child) {
+  border-bottom: 1px solid var(--color-background-100);
+}
+
+.list.list-movies li {
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+.list.list-movies li:hover {
+  background-color: var(--color-background-100);
+
+  @include respond($bp-medium-sm) {
+    background-color: transparent;
+  }
+}
+
+.list.list-movies li:hover .movie-poster {
+  transform: scale(1.17);
+  perspective: 1200px;
+  box-shadow: 0 1rem 2rem rgba(232, 232, 232, 0.05);
+  transition:
+    background 0.5s,
+    transform 0.5s,
+    perspective 0.5s,
+    box-shadow 0.5s;
+
+  @include respond($bp-medium-sm) {
+    transform: scale(100%);
+    perspective: none;
+    box-shadow: none;
+    transition: none;
+  }
+}
+
+.list-movies {
+  margin-top: -3.96rem;
+}
+
+.movie-poster {
+  transition:
+    transform 0.5s,
+    box-shadow 0.5s;
+}
+
+.list.list-movies li p {
+  transition:
+    background 0.5s,
+    transform 0.5s;
+}
+
+.list.list-movies li:hover p {
+  transform: translateX(-0.5rem);
+
+  @include respond($bp-medium-sm) {
+    transform: translateX(0);
+  }
+}
+
+.list img {
+  width: 100%;
+  grid-row: 1 / -1;
+}
+
+.list h3 {
+  font-size: 1.8rem;
+  width: max-content;
+  position: relative;
+
+  @include respond($bp-medium-xs) {
+    width: auto;
+  }
+
+  @include respond($bp-smallest) {
+    font-size: 1.7rem;
+  }
+
+  @include respond($bp-smallest) {
+    font-size: 1.6rem;
+  }
+
+  @include respond($bp-phone) {
+    line-height: 1.4;
+    font-size: 1.5rem;
+    position: static;
+  }
+}
+
+.movie-li {
+  position: relative;
+}
+
+.user-rating {
+  background-color: red;
+  color: var(--color-text-dark);
+  background-color: #3f3f46;
+  font-size: 1.4rem;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 400;
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.2);
+  font-style: italic;
+
+  position: absolute;
+  border-radius: 100px;
+  padding: 0.3rem 1rem;
+  top: -0.8rem;
+  right: -11rem;
+  flex-basis: 85%;
+
+  @include respond($bp-medium-xs) {
+    transform: scale(0.85);
+    top: 3.1rem;
+    left: 6rem;
+  }
+
+  @include respond($bp-phone) {
+    transform: scale(0.75);
+    top: 7.25rem;
+    bottom: 0;
+    left: -0.24rem;
+  }
+}
+
+.user-rated-star {
+  flex-basis: 15%;
+  height: 1.8rem;
+}
+
+.list div {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.list p {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ********************************************************* */
+/*  DELETE BUTTON */
+/* ********************************************************* */
+.btn-delete {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 2.8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-red);
+  color: var(--color-background-900);
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  @include respond($bp-phone) {
+    right: 1rem;
+    top: 1rem;
+    height: 2.3rem;
+  }
+}
+
+@include respond($bp-phone) {
+  .close-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.btn-delete:hover {
+  background-color: var(--color-red-dark);
+
+  @include respond($bp-medium-sm) {
+    background-color: var(--color-red);
+  }
+}
+
+/* ********************************************************* */
+/*  SUMMARY */
+/* ********************************************************* */
+.summary {
+  padding: 1.8rem 3.2rem 1.8rem 5.8rem;
+  border-radius: 0.9rem;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: var(--color-background-100);
+  background-color: #262626;
+
+  border-bottom: 1px solid #404040;
+
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  animation: blurIn 0.35s ease-in;
+
+  @include respond($bp-phone) {
+    padding: 1.6rem 1rem 1.6rem 5.8rem;
+  }
+}
+
+.watched-movie-item {
+  animation: blurIn 0.35s ease-in;
+}
+
+.summary h2 {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.summary div {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+
+  @include respond($bp-phone) {
+    gap: 1.6rem;
+  }
+}
+
+.summary p {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ********************************************************* */
+/*  MOVIE DETAILS */
+/* ********************************************************* */
+.details {
+  line-height: 1.4;
+  font-size: 1.4rem;
+
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  @include respond($bp-medium-sm) {
+    display: block;
+    width: auto;
+    height: auto;
+  }
+}
+
+.details header {
+  display: flex;
+  flex-direction: column;
+  width: 60rem;
+
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.2);
+
+  @include respond($bp-medium-sm) {
+    flex-direction: row;
+    width: auto;
+    box-shadow: none;
+  }
+}
+
+.details section {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+
+  @include respond($bp-medium-sm) {
+    padding: 4rem;
+    width: auto;
+  }
+
+  @include respond($bp-smallest) {
+    padding: 2rem;
+  }
+
+  @include respond($bp-phone) {
+    padding: 1.6rem;
+  }
+}
+
+.details-genre-imdb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include respond($bp-medium-sm) {
+    align-items: flex-start;
+    gap: 1.4rem;
+    flex-direction: column;
+  }
+}
+
+.imdb-rating-num {
+  font-size: 2rem;
+}
+
+.rating-box {
+  position: absolute;
+  right: 4rem;
+  bottom: 2rem;
+  transform: scale(1.9);
+
+  @include respond($bp-largest) {
+    right: 2.5rem;
+    bottom: 1.5rem;
+    transform: scale(1.5);
+  }
+
+  @include respond($bp-large) {
+    right: 2rem;
+    bottom: 1rem;
+    transform: scale(1.3);
+  }
+
+  @include respond($bp-medium-sm) {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    transform: scale(1);
+  }
+}
+
+.details .movie-poster {
+  width: 100%;
+  height: 100%;
+}
+
+.rated-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+  font-style: italic;
+}
+
+.rated-star {
+  display: flex;
+  align-items: center;
+  width: 30px;
+}
+
+.movie-poster {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+
+  @include respond($bp-medium-sm) {
+    box-shadow: none;
+  }
+}
+
+.poster-wrapper {
+  height: 66%;
+  position: relative;
+
+  @include respond($bp-medium-sm) {
+    width: 33%;
+    height: auto;
+  }
+
+  @include respond($bp-phone) {
+    width: 70%;
+    height: 20rem;
+  }
+}
+
+.poster-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom left,
+    rgba(100, 100, 100, 0.2),
+    rgba(220, 220, 220, 0.4)
+  );
+  background: linear-gradient(
+    to bottom left,
+    rgba(0, 0, 0, 0.7),
+    rgba(220, 220, 220, 0.5)
+  );
+  pointer-events: none;
+  animation: breathe 12s infinite alternate;
+}
+
+@keyframes breathe {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+.details-overview {
+  padding: 1.2rem 1.5rem;
+  background-color: var(--color-background-100);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  height: 100%;
+
+  position: relative;
+
+  @include respond($bp-medium-sm) {
+    padding: 2.4rem 3rem;
+    width: 100%;
+    height: auto;
+  }
+
+  @include respond($bp-phone) {
+    padding: 1.2rem 1.5rem;
+  }
+}
+
+.details-overview h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.1;
+
+  @include respond($bp-medium-sm) {
+    font-size: 2.2rem;
+  }
+
+  @include respond($bp-phone) {
+    font-size: 1.8rem;
+  }
+}
+
+.details-overview p {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  gap: 0.2rem;
+}
+
+.rating {
+  background-color: var(--color-background-100);
+  border-radius: 0.9rem;
+  padding: 3rem 2.4rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  overflow: hidden;
+
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+  margin-top: 0.5rem;
+
+  @include respond($bp-medium-sm) {
+    margin-bottom: 0;
+  }
+
+  @include respond($bp-smallest) {
+    padding: 1.6rem 2rem;
+  }
+}
+
+.rating-description {
+  font-size: 2.4rem;
+  font-weight: 300;
+
+  @include respond($bp-medium) {
+    font-size: 2.2rem;
+  }
+
+  @include respond($bp-medium-sm) {
+    font-size: 2.2rem;
+  }
+
+  @include respond($bp-medium-xs) {
+    font-size: 2rem;
+  }
+
+  @include respond($bp-medium-sm) {
+    display: none;
+  }
+}
+
+.plot,
+.actors,
+.director {
+  font-size: 1.6rem;
+
+  @include respond($bp-medium-sm) {
+    font-size: 1.5rem;
+  }
+
+  @include respond($bp-medium-xs) {
+    font-size: 1.4rem;
+  }
+}
+
+.star-rating {
+  transform: scale(1.35);
+  margin: 0 auto;
+
+  @include respond($bp-medium-sm) {
+    transform: scale(1.2);
+  }
+
+  @include respond($bp-medium-xs) {
+    transform: scale(1);
+  }
+}
+
+/* ********************************************************* */
+/*  ADD MOVIE LIST BUTTON */
+/* ********************************************************* */
+.btn-add {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border: none;
+  border-radius: 10rem;
+  font-size: 1.4rem;
+  padding: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 62.5%;
+  height: 5rem;
+  font-size: 1.8rem;
+  margin: 0 auto;
+  transition: all 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  animation: moveUp 0.5s ease-in-out;
+
+  @include respond($bp-medium-sm) {
+    height: 4.5rem;
+  }
+
+  @include respond($bp-phone) {
+    height: 4rem;
+    font-size: 1.3rem;
+  }
+}
+
+.btn-add:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* ********************************************************* */
+/*  WATCH TRAILER BUTTON */
+/* ********************************************************* */
+.btn-trailer {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 100px;
+  color: var(--color-text);
+  background-color: #9f1239;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family: inherit;
+  width: 70%;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-top-right-radius: 1rem;
+  transition: all 0.3s;
+
+  @include respond($bp-large) {
+    padding: 1rem;
+  }
+
+  @include respond($bp-phone) {
+    padding: 0.8rem;
+    border-top-right-radius: 1rem;
+  }
+}
+
+.btn-trailer:hover {
+  background-color: #881337;
+
+  @include respond($bp-medium-sm) {
+    background-color: #9f1239;
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(9rem);
+    opacity: 0;
+    filter: blur(3px);
+  }
+
+  75% {
+    transform: translateY(-1.8rem);
+    opacity: 0.8;
+    filter: blur(3px);
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(3px);
+  }
+}
+
+.seconds {
+  background-color: var(--color-background-100);
+  width: 8rem;
+  border-radius: 10rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.4rem;
+  margin-top: 2.4rem;
+}
+
+/* ********************************************************* */
+/*  GO BACK BUTTON */
+/* ********************************************************* */
+.btn-back {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  height: 3.2rem;
+  height: 4.3rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffffeb;
+  color: var(--color-background-500);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+  font-family: sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  background-color: #ffffffb8;
+
+  @include respond($bp-medium-sm) {
+    background-color: #ffffffeb;
+  }
+}
+
+.move-right {
+  animation: slideRight 0.5s ease-in-out forwards;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.move-left {
+  animation: slideLeft 0.5s ease-in-out forwards;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
